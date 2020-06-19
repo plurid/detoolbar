@@ -7,6 +7,10 @@ import {
 export interface IDetoolbarContext {
     tools: DetoolbarTool[];
     indexedTools: Map<string, DetoolbarTool>;
+    activeSearch: boolean,
+    activateSearch: (
+        value: boolean,
+    ) => void,
     activeTools: string[];
     activeDrawer: string;
     activateTool: (

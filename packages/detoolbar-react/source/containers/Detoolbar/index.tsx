@@ -54,6 +54,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
 
     /** state */
     const [
+        activeSearch,
+        setActiveSearch,
+    ] = useState(false);
+    const [
         activeTools,
         setActiveTools,
     ] = useState<string[]>([]);
@@ -64,6 +68,12 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
 
 
     /** handlers */
+    const activateSearch = (
+        value: boolean,
+    ) => {
+        setActiveSearch(value);
+    }
+
     const activateTool = (
         id: string,
         status: boolean,
@@ -91,6 +101,8 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     const detoolbarContext: IDetoolbarContext = {
         tools,
         indexedTools,
+        activeSearch,
+        activateSearch,
         activeTools,
         activeDrawer,
         activateTool,
