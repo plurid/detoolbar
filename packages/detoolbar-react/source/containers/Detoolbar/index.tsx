@@ -11,6 +11,7 @@ import themes, {
 } from '@plurid/plurid-themes';
 
 import {
+    StyledDetoolbarContainer,
     StyledDetoolbar,
 } from './styled';
 
@@ -91,13 +92,15 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         <DetoolbarContext.Provider
             value={detoolbarContext}
         >
-            <StyledDetoolbar
-                theme={theme}
-            >
-                <Search />
+            <StyledDetoolbarContainer>
+                <StyledDetoolbar
+                    theme={theme}
+                >
+                    <Search />
 
-                <Tools />
-            </StyledDetoolbar>
+                    <Tools />
+                </StyledDetoolbar>
+            </StyledDetoolbarContainer>
         </DetoolbarContext.Provider>
     );
 }

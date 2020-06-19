@@ -6,6 +6,11 @@ import {
 
 
 
+export const StyledDetoolbarContainer = styled.div`
+    display: inline-block;
+`;
+
+
 export interface IStyledDetoolbar {
     theme: Theme;
 }

@@ -48,7 +48,7 @@ export const StyledFiltered = styled.div`
     };
 
     position: absolute;
-    top: 2.5rem;
+    top: 2.8rem;
     left: 0;
     width: 10rem;
 
