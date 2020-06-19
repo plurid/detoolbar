@@ -72,6 +72,16 @@ const Search: React.FC<SearchProperties> = (
     ] = useState<DetoolbarTool[]>([]);
 
 
+    /** handlers */
+    const handleKeyDown = (
+        event: React.KeyboardEvent<HTMLInputElement>,
+    ) => {
+        if (event.key === 'Escape') {
+            activateSearch(false);
+        }
+    }
+
+
     /** effect */
     useEffect(() => {
         const filteredTools = tools.filter(
@@ -122,6 +132,7 @@ const Search: React.FC<SearchProperties> = (
                 placeholder={searchPlaceholder}
                 text={searchValue}
                 atChange={(event) => setSearchValue(event.target.value)}
+                atKeyDown={handleKeyDown}
                 devisible={true}
                 style={{
                     height: '100%',
