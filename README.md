@@ -14,7 +14,7 @@
 
 
 <p align="center">
-    filterable toolbar assembly
+    searchable, configurable toolbar user interface element
 </p>
 
 
