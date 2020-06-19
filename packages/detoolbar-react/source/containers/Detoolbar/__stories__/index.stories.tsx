@@ -43,7 +43,16 @@ const tools: DetoolbarTool[] = [
             <div>Three</div>
         ),
         Drawer: () => (
-            <div>Drawer Three</div>
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    height: '3rem',
+                    padding: '0 1rem',
+                }}
+            >
+                Drawer Three
+            </div>
         ),
     },
 ];
