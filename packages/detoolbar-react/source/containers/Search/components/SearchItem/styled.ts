@@ -8,6 +8,7 @@ import {
 
 export interface IStyledSearchItem {
     theme: Theme;
+    active: boolean;
 }
 
 export const StyledSearchItem = styled.li`
@@ -20,6 +21,19 @@ export const StyledSearchItem = styled.li`
     padding: 0 1rem;
 
     font-size: 0.8rem;
+
+    background-color: ${
+        ({
+            theme,
+            active,
+        }: IStyledSearchItem) => {
+            if (active) {
+                return theme.backgroundColorSecondary;
+            }
+
+            return 'initial';
+        }
+    };
 
     :hover {
         background-color: ${
