@@ -11,7 +11,7 @@ export interface IStyledSearchItem {
     active: boolean;
 }
 
-export const StyledSearchItem = styled.li`
+export const StyledSearchItem = styled.li<IStyledSearchItem>`
     display: flex;
     align-items: center;
     user-select: none;
