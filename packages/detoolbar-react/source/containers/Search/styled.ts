@@ -51,4 +51,10 @@ export const StyledFiltered = styled.div`
     top: 2.5rem;
     left: 0;
     width: 10rem;
+
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 `;

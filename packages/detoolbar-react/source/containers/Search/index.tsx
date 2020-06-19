@@ -69,7 +69,18 @@ const Search: React.FC<SearchProperties> = (
     useEffect(() => {
         const filteredTools = tools.filter(
             (tool) => {
-                if (tool.name.toLowerCase() === searchValue.toLowerCase()) {
+                const name = tool.name.toLowerCase();
+                const value = searchValue.toLowerCase();
+
+                if (name === value) {
+                    return true;
+                }
+
+                if (name.startsWith(value)) {
+                    return true;
+                }
+
+                if (name.endsWith(value)) {
                     return true;
                 }
 
