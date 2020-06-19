@@ -6,7 +6,25 @@ import {
 
 
 
-export const StyledToolItem = styled.li`
+export interface IStyledToolItem {
+    theme: Theme;
+    isActiveDrawer: boolean;
+}
+
+export const StyledToolItem = styled.div<IStyledToolItem>`
+    background-color: ${
+        ({
+            theme,
+            isActiveDrawer,
+        }: IStyledToolItem) => {
+            if (isActiveDrawer) {
+                return theme.backgroundColorPrimary;
+            }
+
+            return 'initial';
+        }
+    };
+
     position: relative;
     display: flex;
     align-items: center;
