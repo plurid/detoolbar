@@ -24,7 +24,7 @@
 
 ## Concept
 
-Detoolbar is an utility user interface component to facilitate the building of searchable, configurable toolbars.
+Detoolbar is an utility user interface element to facilitate the assembly of searchable, configurable toolbars.
 
 <p align="center">
     <img src="https://raw.githubusercontent.com/plurid/detoolbar/master/about/notes/concept/detoolbar.jpg" width="400px">
