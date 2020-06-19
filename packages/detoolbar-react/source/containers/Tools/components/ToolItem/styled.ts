@@ -28,11 +28,16 @@ export const StyledToolItem = styled.div<IStyledToolItem>`
     position: relative;
     display: flex;
     align-items: center;
-
     height: 100%;
-    padding: 0 1rem;
-
     font-size: 0.8rem;
+`;
+
+
+export const StyledToolItemButton = styled.div`
+    display: flex;
+    align-items: center;
+    height: 100%;
+    margin: 0 0.4rem;
 `;
 
 
