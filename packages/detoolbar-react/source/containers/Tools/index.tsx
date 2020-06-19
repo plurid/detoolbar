@@ -3,6 +3,10 @@ import React, {
 } from 'react';
 
 import {
+    uuid,
+} from '@plurid/plurid-functions';
+
+import {
     StyledTools,
 } from './styled';
 
@@ -37,7 +41,24 @@ const Tools: React.FC<ToolsProperties> = (
     /** render */
     return (
         <StyledTools>
+            {activeTools.map(activeTool => {
+                const tool = tools.get(activeTool);
+                if (!tool) {
+                    return;
+                }
 
+                const {
+                    Tool,
+                } = tool;
+
+                return (
+                    <div
+                        key={uuid.generate()}
+                    >
+                        <Tool />
+                    </div>
+                );
+            })}
         </StyledTools>
     );
 }

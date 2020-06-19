@@ -1,4 +1,10 @@
-import React from 'react';
+import React, {
+    useState,
+} from 'react';
+
+import {
+    indexing,
+} from '@plurid/plurid-functions';
 
 import {
     StyledDetoolbar,
@@ -29,10 +35,49 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     } = properties;
 
 
+
+    /** state */
+    const [
+        indexedTools,
+        setIndexedTools,
+    ] = useState<Map<string, DetoolbarTool>>(indexing.create(
+        indexing.identify(tools, 'id') as DetoolbarTool[],
+        'map',
+        'id'
+    ));
+
+    const [
+        activeTools,
+        setActiveTools,
+    ] = useState<string[]>([]);
+
+
+    /** handlers */
+    const activateTool = (
+        id: string,
+        status: boolean,
+    ) => {
+        // const newIndexedTools = new Map(indexedTools);
+        // const tool = newIndexedTools.get(id);
+        // const tool = indexedTools.get(id);
+        if (status) {
+            const newActiveTools = [
+                ...activeTools,
+            ];
+            newActiveTools.push(id);
+            setActiveTools(newActiveTools);
+        } else {
+            const newActiveTools = activeTools.filter(toolID => toolID !== id);
+            setActiveTools(newActiveTools);
+        }
+    }
+
+
     /** context */
     const detoolbarContext: IDetoolbarContext = {
-        tools,
-        activeTools: [],
+        tools: indexedTools,
+        activeTools,
+        activateTool,
     };
 
 
