@@ -6,6 +6,7 @@ import React, {
 
 import {
     StyledToolItem,
+    StyledToolDrawer,
 } from './styled';
 
 import {
@@ -30,8 +31,11 @@ const ToolItem: React.FC<ToolItemProperties> = (
         return (<></>);
     }
 
-    // const {
-    // } = context;
+    const {
+        theme,
+        activeDrawer,
+        activateDrawer,
+    } = context;
 
 
     /** properties */
@@ -40,7 +44,9 @@ const ToolItem: React.FC<ToolItemProperties> = (
     } = properties;
 
     const {
+        id,
         Tool,
+        Drawer,
     } = tool;
 
 
@@ -52,8 +58,28 @@ const ToolItem: React.FC<ToolItemProperties> = (
 
     /** render */
     return (
-        <StyledToolItem>
+        <StyledToolItem
+            onClick={() => {
+                if (Drawer) {
+                    if (activeDrawer !== id) {
+                        activateDrawer(id || '');
+                    } else {
+                        activateDrawer('');
+                    }
+                }
+            }}
+        >
             <Tool />
+
+            {Drawer
+            && activeDrawer === id
+            && (
+                <StyledToolDrawer
+                    theme={theme}
+                >
+                    <Drawer />
+                </StyledToolDrawer>
+            )}
         </StyledToolItem>
     );
 }

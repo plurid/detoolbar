@@ -57,6 +57,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         activeTools,
         setActiveTools,
     ] = useState<string[]>([]);
+    const [
+        activeDrawer,
+        setActiveDrawer,
+    ] = useState('');
 
 
     /** handlers */
@@ -76,13 +80,21 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         }
     }
 
+    const activateDrawer = (
+        id: string,
+    ) => {
+        setActiveDrawer(id);
+    }
+
 
     /** context */
     const detoolbarContext: IDetoolbarContext = {
         tools,
         indexedTools,
         activeTools,
+        activeDrawer,
         activateTool,
+        activateDrawer,
         theme,
     };
 
