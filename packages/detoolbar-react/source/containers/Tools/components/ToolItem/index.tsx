@@ -33,6 +33,7 @@ const ToolItem: React.FC<ToolItemProperties> = (
 
     const {
         theme,
+        activateSearch,
         activeDrawer,
         activateDrawer,
     } = context;
@@ -62,6 +63,7 @@ const ToolItem: React.FC<ToolItemProperties> = (
             onClick={() => {
                 if (Drawer) {
                     if (activeDrawer !== id) {
+                        activateSearch(false);
                         activateDrawer(id || '');
                     } else {
                         activateDrawer('');

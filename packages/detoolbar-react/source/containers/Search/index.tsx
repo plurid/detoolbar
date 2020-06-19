@@ -43,6 +43,8 @@ const Search: React.FC<SearchProperties> = (
     const {
         tools,
         indexedTools,
+        activeSearch,
+        activateSearch,
         activeTools,
         activateTool,
         theme,
@@ -97,6 +99,14 @@ const Search: React.FC<SearchProperties> = (
         searchValue,
     ]);
 
+    useEffect(() => {
+        if (filteredTools.length > 0) {
+            activateSearch(true);
+        }
+    }, [
+        filteredTools,
+    ]);
+
 
     /** render */
     return (
@@ -114,7 +124,7 @@ const Search: React.FC<SearchProperties> = (
                 }}
             />
 
-            {filteredTools.length > 0 && (
+            {activeSearch && (
                 <StyledFiltered
                     theme={theme}
                 >
