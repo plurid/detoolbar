@@ -33,6 +33,7 @@ const SearchItem: React.FC<SearchItemProperties> = (
     const {
         activateTool,
         theme,
+        activeTools,
     } = context;
 
 
@@ -58,8 +59,13 @@ const SearchItem: React.FC<SearchItemProperties> = (
         <StyledSearchItem
             theme={theme}
             onClick={() => {
-                activateTool(id || '', true)
+                if (activeTools.includes(id || '')) {
+                    activateTool(id || '', false);
+                } else {
+                    activateTool(id || '', true);
+                }
             }}
+            active={activeTools.includes(id || '')}
         >
             {name}
         </StyledSearchItem>
