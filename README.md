@@ -16,3 +16,11 @@
 <p align="center">
     filterable toolbar assembly
 </p>
+
+
+
+## Concept
+
+Detoolbar is an utility user interface component to facilitate the building of searchable, configurable toolbars.
+
+<img src="https://raw.githubusercontent.com/plurid/detoolbar/master/about/notes/concept/detoolbar.jpg" height="500px">
