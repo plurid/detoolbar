@@ -52,6 +52,9 @@ export const StyledFiltered = styled.div`
     left: 0;
     width: 10rem;
 
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+
     ul {
         list-style: none;
         padding: 0;

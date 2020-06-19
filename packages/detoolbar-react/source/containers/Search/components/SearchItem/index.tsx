@@ -56,6 +56,7 @@ const SearchItem: React.FC<SearchItemProperties> = (
     /** render */
     return (
         <StyledSearchItem
+            theme={theme}
             onClick={() => {
                 activateTool(id || '', true)
             }}
