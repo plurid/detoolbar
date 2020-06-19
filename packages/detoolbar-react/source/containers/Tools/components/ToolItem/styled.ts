@@ -18,7 +18,7 @@ export const StyledToolItem = styled.div<IStyledToolItem>`
             isActiveDrawer,
         }: IStyledToolItem) => {
             if (isActiveDrawer) {
-                return theme.backgroundColorPrimary;
+                return theme.backgroundColorSecondary;
             }
 
             return 'initial';
