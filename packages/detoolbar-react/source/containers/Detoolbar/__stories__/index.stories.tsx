@@ -36,6 +36,16 @@ const tools: DetoolbarTool[] = [
             <div>Two</div>
         ),
     },
+    {
+        id: 'three',
+        name: 'Three',
+        Tool: () => (
+            <div>Three</div>
+        ),
+        Drawer: () => (
+            <div>Drawer Three</div>
+        ),
+    },
 ];
 
 // const actions = {
