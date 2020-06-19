@@ -23,8 +23,11 @@ import {
 
 const tools: DetoolbarTool[] = [
     {
+        id: 'one',
         name: 'One',
-        Tool: () => (<div>One</div>),
+        Tool: () => (
+            <div>One</div>
+        ),
     },
 ];
 
@@ -52,13 +55,17 @@ storiesOf(
     // const theme = select(themeLabel, themeOptions, defaultThemeValue);
 
     return (
-        <>
+        <div
+            style={{
+                padding: '4rem',
+            }}
+        >
             <Detoolbar
                 tools={tools}
 
                 // {...actions}
                 // theme={themes[theme]}
             />
-        </>
+        </div>
     );
 });

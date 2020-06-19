@@ -1,5 +1,7 @@
 import React, {
     useContext,
+    useState,
+    useEffect,
 } from 'react';
 
 import {
@@ -7,8 +9,19 @@ import {
 } from '@plurid/plurid-functions';
 
 import {
+    PluridTextline,
+} from '@plurid/plurid-ui-react';
+
+import {
     StyledSearch,
+    StyledFiltered,
 } from './styled';
+
+import SearchItem from './components/SearchItem';
+
+import {
+    DetoolbarTool,
+} from '../../data/interfaces';
 
 import DetoolbarContext from '../../services/context';
 
@@ -29,8 +42,10 @@ const Search: React.FC<SearchProperties> = (
 
     const {
         tools,
+        indexedTools,
         activeTools,
         activateTool,
+        theme,
     } = context;
 
 
@@ -39,25 +54,67 @@ const Search: React.FC<SearchProperties> = (
     // } = properties;
 
 
+    /** state */
+    const [
+        searchValue,
+        setSearchValue,
+    ] = useState('');
+    const [
+        filteredTools,
+        setFilteredTools,
+    ] = useState<DetoolbarTool[]>([]);
+
+
+    /** effect */
+    useEffect(() => {
+        const filteredTools = tools.filter(
+            (tool) => {
+                if (tool.name.toLowerCase() === searchValue.toLowerCase()) {
+                    return true;
+                }
+
+                return;
+            }
+        );
+
+        setFilteredTools(filteredTools);
+    }, [
+        searchValue,
+    ]);
+
+
     /** render */
     return (
-        <StyledSearch>
-            {Array.from(tools).map(([id, tool]) => {
-                const {
-                    name,
-                } = tool;
+        <StyledSearch
+            theme={theme}
+        >
+            <PluridTextline
+                placeholder="search"
+                text={searchValue}
+                atChange={(event) => setSearchValue(event.target.value)}
+                devisible={true}
+                style={{
+                    height: '100%',
+                    padding: '0 1rem',
+                }}
+            />
 
-                return (
-                    <div
-                        key={uuid.generate()}
-                        onClick={() => {
-                            activateTool(id, true)
-                        }}
-                    >
-                        {name}
-                    </div>
-                );
-            })}
+            {filteredTools.length > 0 && (
+                <StyledFiltered
+                    theme={theme}
+                >
+                    <ul>
+                        {filteredTools.map((tool) => {
+                            return (
+                                <SearchItem
+                                    key={uuid.generate()}
+                                    tool={tool}
+                                />
+                            );
+                        })}
+                    </ul>
+                </StyledFiltered>
+            )}
         </StyledSearch>
     );
 }

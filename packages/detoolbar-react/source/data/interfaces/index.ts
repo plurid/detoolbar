@@ -1,10 +1,18 @@
+import {
+    Theme,
+} from '@plurid/plurid-themes';
+
+
+
 export interface IDetoolbarContext {
-    tools: Map<string, DetoolbarTool>;
+    tools: DetoolbarTool[];
+    indexedTools: Map<string, DetoolbarTool>;
     activeTools: string[];
     activateTool: (
         id: string,
         status: boolean,
     ) => void;
+    theme: Theme;
 }
 
 
