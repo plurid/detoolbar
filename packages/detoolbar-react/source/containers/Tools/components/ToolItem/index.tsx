@@ -59,19 +59,21 @@ const ToolItem: React.FC<ToolItemProperties> = (
 
     /** render */
     return (
-        <StyledToolItem
-            onClick={() => {
-                if (Drawer) {
-                    if (activeDrawer !== id) {
-                        activateSearch(false);
-                        activateDrawer(id || '');
-                    } else {
-                        activateDrawer('');
+        <StyledToolItem>
+            <div
+                onClick={() => {
+                    if (Drawer) {
+                        if (activeDrawer !== id) {
+                            activateSearch(false);
+                            activateDrawer(id || '');
+                        } else {
+                            activateDrawer('');
+                        }
                     }
-                }
-            }}
-        >
-            <Tool />
+                }}
+            >
+                <Tool />
+            </div>
 
             {Drawer
             && activeDrawer === id
