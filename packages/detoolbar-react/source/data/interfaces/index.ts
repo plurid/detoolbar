@@ -1,6 +1,10 @@
 export interface IDetoolbarContext {
-    tools: DetoolbarTool[];
+    tools: Map<string, DetoolbarTool>;
     activeTools: string[];
+    activateTool: (
+        id: string,
+        status: boolean,
+    ) => void;
 }
 
 

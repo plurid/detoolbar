@@ -3,6 +3,10 @@ import React, {
 } from 'react';
 
 import {
+    uuid,
+} from '@plurid/plurid-functions';
+
+import {
     StyledSearch,
 } from './styled';
 
@@ -26,6 +30,7 @@ const Search: React.FC<SearchProperties> = (
     const {
         tools,
         activeTools,
+        activateTool,
     } = context;
 
 
@@ -37,7 +42,22 @@ const Search: React.FC<SearchProperties> = (
     /** render */
     return (
         <StyledSearch>
+            {Array.from(tools).map(([id, tool]) => {
+                const {
+                    name,
+                } = tool;
 
+                return (
+                    <div
+                        key={uuid.generate()}
+                        onClick={() => {
+                            activateTool(id, true)
+                        }}
+                    >
+                        {name}
+                    </div>
+                );
+            })}
         </StyledSearch>
     );
 }
