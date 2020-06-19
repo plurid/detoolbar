@@ -72,6 +72,10 @@ const Search: React.FC<SearchProperties> = (
                 const name = tool.name.toLowerCase();
                 const value = searchValue.toLowerCase();
 
+                if (!value) {
+                    return false;
+                }
+
                 if (name === value) {
                     return true;
                 }

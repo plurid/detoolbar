@@ -10,6 +10,8 @@ import {
     StyledTools,
 } from './styled';
 
+import ToolItem from './components/ToolItem';
+
 import DetoolbarContext from '../../services/context';
 
 
@@ -28,7 +30,6 @@ const Tools: React.FC<ToolsProperties> = (
     }
 
     const {
-        tools,
         indexedTools,
         activeTools,
     } = context;
@@ -48,16 +49,11 @@ const Tools: React.FC<ToolsProperties> = (
                     return;
                 }
 
-                const {
-                    Tool,
-                } = tool;
-
                 return (
-                    <div
+                    <ToolItem
                         key={uuid.generate()}
-                    >
-                        <Tool />
-                    </div>
+                        tool={tool}
+                    />
                 );
             })}
         </StyledTools>
