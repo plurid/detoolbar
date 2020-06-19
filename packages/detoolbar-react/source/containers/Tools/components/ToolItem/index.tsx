@@ -50,6 +50,8 @@ const ToolItem: React.FC<ToolItemProperties> = (
         Drawer,
     } = tool;
 
+    const isActiveDrawer = activeDrawer === id;
+
 
     /** state */
 
@@ -59,11 +61,14 @@ const ToolItem: React.FC<ToolItemProperties> = (
 
     /** render */
     return (
-        <StyledToolItem>
+        <StyledToolItem
+            theme={theme}
+            isActiveDrawer={isActiveDrawer}
+        >
             <div
                 onClick={() => {
                     if (Drawer) {
-                        if (activeDrawer !== id) {
+                        if (isActiveDrawer) {
                             activateSearch(false);
                             activateDrawer(id || '');
                         } else {
@@ -76,7 +81,7 @@ const ToolItem: React.FC<ToolItemProperties> = (
             </div>
 
             {Drawer
-            && activeDrawer === id
+            && isActiveDrawer
             && (
                 <StyledToolDrawer
                     theme={theme}
