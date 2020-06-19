@@ -44,6 +44,7 @@ export const StyledToolDrawer = styled.div<IStyledToolDrawer>`
     width: 10rem;
     min-height: 3rem;
 
+    border-top-right-radius: 1rem;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 `;
