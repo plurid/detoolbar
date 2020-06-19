@@ -29,6 +29,7 @@ const Tools: React.FC<ToolsProperties> = (
 
     const {
         tools,
+        indexedTools,
         activeTools,
     } = context;
 
@@ -42,7 +43,7 @@ const Tools: React.FC<ToolsProperties> = (
     return (
         <StyledTools>
             {activeTools.map(activeTool => {
-                const tool = tools.get(activeTool);
+                const tool = indexedTools.get(activeTool);
                 if (!tool) {
                     return;
                 }

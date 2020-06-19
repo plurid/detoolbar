@@ -6,6 +6,10 @@ import {
     indexing,
 } from '@plurid/plurid-functions';
 
+import themes, {
+    Theme,
+} from '@plurid/plurid-themes';
+
 import {
     StyledDetoolbar,
 } from './styled';
@@ -24,6 +28,7 @@ import DetoolbarContext from '../../services/context';
 
 export interface DetoolbarProperties {
     tools: DetoolbarTool[];
+    theme?: string;
 }
 
 const Detoolbar: React.FC<DetoolbarProperties> = (
@@ -32,20 +37,21 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     /** properties */
     const {
         tools,
+        theme: themeProperty,
     } = properties;
 
+    const theme: Theme = typeof themeProperty === 'string' && (themes as any)[themeProperty]
+        ? (themes as any)[themeProperty]
+        : themes.plurid;
 
-
-    /** state */
-    const [
-        indexedTools,
-        setIndexedTools,
-    ] = useState<Map<string, DetoolbarTool>>(indexing.create(
+    const indexedTools = indexing.create(
         indexing.identify(tools, 'id') as DetoolbarTool[],
         'map',
         'id'
-    ));
+    );
 
+
+    /** state */
     const [
         activeTools,
         setActiveTools,
@@ -57,9 +63,6 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         id: string,
         status: boolean,
     ) => {
-        // const newIndexedTools = new Map(indexedTools);
-        // const tool = newIndexedTools.get(id);
-        // const tool = indexedTools.get(id);
         if (status) {
             const newActiveTools = [
                 ...activeTools,
@@ -75,9 +78,11 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
 
     /** context */
     const detoolbarContext: IDetoolbarContext = {
-        tools: indexedTools,
+        tools,
+        indexedTools,
         activeTools,
         activateTool,
+        theme,
     };
 
 
@@ -86,7 +91,9 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         <DetoolbarContext.Provider
             value={detoolbarContext}
         >
-            <StyledDetoolbar>
+            <StyledDetoolbar
+                theme={theme}
+            >
                 <Search />
 
                 <Tools />
