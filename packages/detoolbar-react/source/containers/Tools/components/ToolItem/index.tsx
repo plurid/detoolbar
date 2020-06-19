@@ -1,11 +1,12 @@
 import React, {
     useContext,
-    // useState,
-    // useEffect,
+    useState,
+    useEffect,
 } from 'react';
 
 import {
     StyledToolItem,
+    StyledToolItemButton,
     StyledToolDrawer,
 } from './styled';
 
@@ -50,13 +51,21 @@ const ToolItem: React.FC<ToolItemProperties> = (
         Drawer,
     } = tool;
 
-    const isActiveDrawer = activeDrawer === id;
-
 
     /** state */
+    const [
+        isActiveDrawer,
+        setIsActiveDrawer,
+    ] = useState(false);
 
 
     /** effect */
+    useEffect(() => {
+        const isActiveDrawer = activeDrawer === id;
+        setIsActiveDrawer(isActiveDrawer);
+    }, [
+        activeDrawer,
+    ]);
 
 
     /** render */
@@ -65,10 +74,10 @@ const ToolItem: React.FC<ToolItemProperties> = (
             theme={theme}
             isActiveDrawer={isActiveDrawer}
         >
-            <div
+            <StyledToolItemButton
                 onClick={() => {
                     if (Drawer) {
-                        if (isActiveDrawer) {
+                        if (!isActiveDrawer) {
                             activateSearch(false);
                             activateDrawer(id || '');
                         } else {
@@ -78,7 +87,7 @@ const ToolItem: React.FC<ToolItemProperties> = (
                 }}
             >
                 <Tool />
-            </div>
+            </StyledToolItemButton>
 
             {Drawer
             && isActiveDrawer
