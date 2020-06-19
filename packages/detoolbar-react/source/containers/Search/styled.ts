@@ -60,4 +60,9 @@ export const StyledFiltered = styled.div`
         padding: 0;
         margin: 0;
     }
+
+    li:last-child {
+        border-bottom-left-radius: 1rem;
+        border-bottom-right-radius: 1rem;
+    }
 `;
