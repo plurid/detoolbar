@@ -9,6 +9,8 @@ import {
 export const StyledSearchItem = styled.li`
     display: flex;
     align-items: center;
+    user-select: none;
+    cursor: pointer;
 
     height: 2rem;
     padding: 0 1rem;
