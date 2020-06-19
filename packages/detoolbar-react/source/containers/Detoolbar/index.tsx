@@ -19,6 +19,7 @@ import Search from '../Search';
 import Tools from '../Tools';
 
 import {
+    DetoolbarConfiguration,
     DetoolbarTool,
     IDetoolbarContext,
 } from '../../data/interfaces';
@@ -30,6 +31,7 @@ import DetoolbarContext from '../../services/context';
 export interface DetoolbarProperties {
     tools: DetoolbarTool[];
     theme?: string;
+    configuration?: Partial<DetoolbarConfiguration>;
 }
 
 const Detoolbar: React.FC<DetoolbarProperties> = (
@@ -39,6 +41,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     const {
         tools,
         theme: themeProperty,
+        configuration: configurationProperty,
     } = properties;
 
     const theme: Theme = typeof themeProperty === 'string' && (themes as any)[themeProperty]
@@ -50,6 +53,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         'map',
         'id'
     );
+
+    const configuration: DetoolbarConfiguration = {
+        searchPlaceholder: configurationProperty?.searchPlaceholder || 'search',
+    };
 
 
     /** state */
@@ -101,6 +108,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     const detoolbarContext: IDetoolbarContext = {
         tools,
         indexedTools,
+        configuration,
         activeSearch,
         activateSearch,
         activeTools,

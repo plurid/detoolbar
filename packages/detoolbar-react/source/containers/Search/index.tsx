@@ -43,12 +43,17 @@ const Search: React.FC<SearchProperties> = (
     const {
         tools,
         indexedTools,
+        configuration,
         activeSearch,
         activateSearch,
         activeTools,
         activateTool,
         theme,
     } = context;
+
+    const {
+        searchPlaceholder,
+    } = configuration;
 
 
     /** properties */
@@ -114,7 +119,7 @@ const Search: React.FC<SearchProperties> = (
             theme={theme}
         >
             <PluridTextline
-                placeholder="search"
+                placeholder={searchPlaceholder}
                 text={searchValue}
                 atChange={(event) => setSearchValue(event.target.value)}
                 devisible={true}

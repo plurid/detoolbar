@@ -4,9 +4,15 @@ import {
 
 
 
+export interface DetoolbarConfiguration {
+    searchPlaceholder: string;
+}
+
+
 export interface IDetoolbarContext {
     tools: DetoolbarTool[];
     indexedTools: Map<string, DetoolbarTool>;
+    configuration: DetoolbarConfiguration;
     activeSearch: boolean,
     activateSearch: (
         value: boolean,
