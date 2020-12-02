@@ -9,8 +9,8 @@ import {
 } from '@plurid/plurid-functions';
 
 import {
-    PluridTextline,
-} from '@plurid/plurid-ui-react';
+    universal,
+} from '@plurid/plurid-ui-components-react';
 
 import {
     StyledSearch,
@@ -26,6 +26,12 @@ import {
 import DetoolbarContext from '../../services/context';
 
 
+
+const {
+    inputs: {
+        Textline: PluridTextline,
+    },
+} = universal;
 
 export interface SearchProperties {
 }
