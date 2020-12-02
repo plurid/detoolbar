@@ -1,20 +1,20 @@
 // #region imports
     // #region libraries
-    // import resolve from '@rollup/plugin-node-resolve';
-    // import external from 'rollup-plugin-peer-deps-external';
-    import commonjs from '@rollup/plugin-commonjs';
-    // import sourceMaps from 'rollup-plugin-sourcemaps';
+    import ttypescript from 'ttypescript';
+    import external from 'rollup-plugin-peer-deps-external';
     import typescript from 'rollup-plugin-typescript2';
     // #endregion libraries
+
+
+    // #region external
+    import pkg from '../package.json';
+    // #endregion external
 // #endregion imports
 
 
 
 // #region module
-const pkg = require('../package.json');
-
 const globals = {
-    'commander': 'program',
 };
 
 const build =  {
@@ -39,17 +39,13 @@ const build =  {
         include: 'source/**',
     },
     plugins: [
-        commonjs(),
         typescript({
+            typescript: ttypescript,
             useTsconfigDeclarationDir: true,
         }),
-        // external({
-        //     includeDependencies: true,
-        // }),
-        // resolve({
-        //     preferBuiltins: true,
-        // }),
-        // sourceMaps(),
+        external({
+            includeDependencies: true,
+        }),
     ],
 };
 // #endregion module
