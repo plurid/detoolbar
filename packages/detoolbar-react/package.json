@@ -3,7 +3,8 @@
     "version": "0.0.0-0",
     "description": "detoolbar for React",
     "keywords": [
-        "detoolbar"
+        "detoolbar",
+        "react"
     ],
     "author": "ly3xqhl8g9 <ly3xqhl8g9@plurid.com> (https://plurid.com)",
     "license": "SEE LICENSE IN LICENSE",
