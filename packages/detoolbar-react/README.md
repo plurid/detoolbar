@@ -1,6 +1,7 @@
 <p align="center">
     <img src="https://raw.githubusercontent.com/plurid/detoolbar/master/about/identity/detoolbar-logo.png" height="250px">
     <br />
+    <br />
     <a target="_blank" href="https://www.npmjs.com/package/@plurid/detoolbar-react">
         <img src="https://img.shields.io/npm/v/@plurid/detoolbar-react.svg?logo=npm&colorB=1380C3&style=for-the-badge" alt="Version">
     </a>
@@ -23,6 +24,13 @@
 
 
 <br />
+
+
+
+### Contents
+
++ [Concept](#concept)
++ [Codeophon](#codeophon)
 
 
 
