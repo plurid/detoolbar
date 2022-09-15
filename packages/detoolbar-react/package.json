@@ -36,7 +36,7 @@
         "test": "jest -c ./configurations/jest.config.js --coverage --passWithNoTests ./source",
         "lint": "eslint -c ./configurations/.eslintrc.js ./source --ext .ts,.tsx",
         "start": "pnpm clean && rollup -c ./scripts/rollup.config.ts -w --environment ENV_MODE:local",
-        "build.clean": "rm -rf `find ./distribution/ -type d -name __tests__` && rm -rf `find ./distribution/ -type d -name __stories__` && rm -rf ./distribution/utilities/storybook",
+        "build.clean": "rm -rf `find ./distribution/ -type d -name __tests__`",
         "build.development": "pnpm clean && rollup -c ./scripts/rollup.config.ts --environment ENV_MODE:development",
         "build.production": "pnpm clean && rollup -c ./scripts/rollup.config.ts --environment ENV_MODE:production",
         "build": "pnpm clean && pnpm lint && pnpm test && pnpm build.production && pnpm build.clean",
