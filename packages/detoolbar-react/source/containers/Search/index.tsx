@@ -9,10 +9,6 @@
     import {
         uuid,
     } from '@plurid/plurid-functions';
-
-    import {
-        universal,
-    } from '@plurid/plurid-ui-components-react';
     // #endregion libraries
 
 
@@ -22,6 +18,10 @@
     } from '../../data/interfaces';
 
     import DetoolbarContext from '../../services/context';
+
+    import {
+        PluridTextline,
+    } from '../../services/styled';
     // #endregion external
 
 
@@ -38,19 +38,13 @@
 
 
 // #region module
-const {
-    inputs: {
-        Textline: PluridTextline,
-    },
-} = universal;
-
 export interface SearchProperties {
 }
 
 const Search: React.FC<SearchProperties> = (
     properties,
 ) => {
-    /** context */
+    // #region context
     const context = useContext(DetoolbarContext);
 
     if (!context) {
@@ -71,14 +65,16 @@ const Search: React.FC<SearchProperties> = (
     const {
         searchPlaceholder,
     } = configuration;
+    // #endregion context
 
 
-    /** properties */
+    // #region properties
     // const {
     // } = properties;
+    // #endregion properties
 
 
-    /** state */
+    // #region state
     const [
         searchValue,
         setSearchValue,
@@ -87,9 +83,10 @@ const Search: React.FC<SearchProperties> = (
         filteredTools,
         setFilteredTools,
     ] = useState<DetoolbarTool[]>([]);
+    // #endregion state
 
 
-    /** handlers */
+    // #region handlers
     const handleKeyDown = (
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
@@ -97,9 +94,10 @@ const Search: React.FC<SearchProperties> = (
             activateSearch(false);
         }
     }
+    // #endregion handlers
 
 
-    /** effect */
+    // #region effects
     useEffect(() => {
         const filteredTools = tools.filter(
             (tool) => {
@@ -138,9 +136,10 @@ const Search: React.FC<SearchProperties> = (
     }, [
         filteredTools,
     ]);
+    // #endregion effects
 
 
-    /** render */
+    // #region render
     return (
         <StyledSearch
             theme={theme}
@@ -175,6 +174,7 @@ const Search: React.FC<SearchProperties> = (
             )}
         </StyledSearch>
     );
+    // #endregion render
 }
 // #endregion module
 
