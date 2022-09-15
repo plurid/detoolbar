@@ -22,25 +22,13 @@ export interface IStyledDetoolbar {
 
 export const StyledDetoolbar = styled.div`
     background-color: ${
-        ({
-            theme,
-        }: IStyledDetoolbar) => {
-            return theme.backgroundColorPrimary;
-        }
+        ({theme}: IStyledDetoolbar) => theme.backgroundColorPrimary
     };
     box-shadow: ${
-        ({
-            theme,
-        }: IStyledDetoolbar) => {
-            return theme.boxShadowUmbra;
-        }
+        ({theme}: IStyledDetoolbar) => theme.boxShadowUmbra
     };
     color: ${
-        ({
-            theme,
-        }: IStyledDetoolbar) => {
-            return theme.colorPrimary;
-        }
+        ({theme}: IStyledDetoolbar) => theme.colorPrimary
     };
 
     display: flex;
@@ -51,7 +39,8 @@ export const StyledDetoolbar = styled.div`
     border-radius: 1.25rem;
 
     font-size: 0.9rem;
-    font-family: Ubuntu, -apple-system, BlinkMacSystemFont,
-        'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: ${
+        ({theme}: IStyledDetoolbar) => theme.fontFamilySansSerif
+    };
 `;
 // #endregion module

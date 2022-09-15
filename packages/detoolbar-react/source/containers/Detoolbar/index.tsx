@@ -43,6 +43,9 @@ export interface DetoolbarProperties {
     tools: DetoolbarTool[];
     theme?: string;
     configuration?: Partial<DetoolbarConfiguration>;
+
+    style?: React.CSSProperties;
+    className?: string;
 }
 
 const Detoolbar: React.FC<DetoolbarProperties> = (
@@ -53,6 +56,9 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         tools,
         theme: themeProperty,
         configuration: configurationProperty,
+
+        style,
+        className,
     } = properties;
 
     const theme: Theme = typeof themeProperty === 'string' && (themes as any)[themeProperty]
@@ -142,6 +148,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
             <StyledDetoolbarContainer>
                 <StyledDetoolbar
                     theme={theme}
+                    style={{
+                        ...style,
+                    }}
+                    className={className}
                 >
                     <Search />
 
