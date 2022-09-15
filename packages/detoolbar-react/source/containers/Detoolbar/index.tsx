@@ -1,33 +1,44 @@
-import React, {
-    useState,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useState,
+    } from 'react';
 
-import {
-    indexing,
-} from '@plurid/plurid-functions';
+    import {
+        indexing,
+    } from '@plurid/plurid-functions';
 
-import themes, {
-    Theme,
-} from '@plurid/plurid-themes';
-
-import {
-    StyledDetoolbarContainer,
-    StyledDetoolbar,
-} from './styled';
-
-import Search from '../Search';
-import Tools from '../Tools';
-
-import {
-    DetoolbarConfiguration,
-    DetoolbarTool,
-    IDetoolbarContext,
-} from '../../data/interfaces';
-
-import DetoolbarContext from '../../services/context';
+    import themes, {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
 
 
+    // #region external
+    import Search from '../Search';
+    import Tools from '../Tools';
 
+    import {
+        DetoolbarConfiguration,
+        DetoolbarTool,
+        IDetoolbarContext,
+    } from '../../data/interfaces';
+
+    import DetoolbarContext from '../../services/context';
+    // #endregion external
+
+
+    // #region internal
+    import {
+        StyledDetoolbarContainer,
+        StyledDetoolbar,
+    } from './styled';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 export interface DetoolbarProperties {
     tools: DetoolbarTool[];
     theme?: string;
@@ -37,7 +48,7 @@ export interface DetoolbarProperties {
 const Detoolbar: React.FC<DetoolbarProperties> = (
     properties,
 ) => {
-    /** properties */
+    // #region properties
     const {
         tools,
         theme: themeProperty,
@@ -57,9 +68,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     const configuration: DetoolbarConfiguration = {
         searchPlaceholder: configurationProperty?.searchPlaceholder || 'search',
     };
+    // #endregion properties
 
 
-    /** state */
+    // #region state
     const [
         activeSearch,
         setActiveSearch,
@@ -72,9 +84,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         activeDrawer,
         setActiveDrawer,
     ] = useState('');
+    // #endregion state
 
 
-    /** handlers */
+    // #region handlers
     const activateSearch = (
         value: boolean,
     ) => {
@@ -102,9 +115,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     ) => {
         setActiveDrawer(id);
     }
+    // #endregion handlers
 
 
-    /** context */
+    // #region context
     const detoolbarContext: IDetoolbarContext = {
         tools,
         indexedTools,
@@ -117,9 +131,10 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         activateDrawer,
         theme,
     };
+    // #endregion context
 
 
-    /** render */
+    // #region render
     return (
         <DetoolbarContext.Provider
             value={detoolbarContext}
@@ -135,7 +150,12 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
             </StyledDetoolbarContainer>
         </DetoolbarContext.Provider>
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default Detoolbar;
+// #endregion exports

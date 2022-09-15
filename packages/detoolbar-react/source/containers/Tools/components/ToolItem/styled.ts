@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+// #region imports
+    // #region libraries
+    import styled from 'styled-components';
 
-import {
-    Theme,
-} from '@plurid/plurid-themes';
+    import type {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export interface IStyledToolItem {
     theme: Theme;
     isActiveDrawer: boolean;
@@ -71,3 +76,4 @@ export const StyledToolDrawer = styled.div<IStyledToolDrawer>`
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
 `;
+// #endregion module

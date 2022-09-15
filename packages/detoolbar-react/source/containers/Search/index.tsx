@@ -1,32 +1,43 @@
-import React, {
-    useContext,
-    useState,
-    useEffect,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useContext,
+        useState,
+        useEffect,
+    } from 'react';
 
-import {
-    uuid,
-} from '@plurid/plurid-functions';
+    import {
+        uuid,
+    } from '@plurid/plurid-functions';
 
-import {
-    universal,
-} from '@plurid/plurid-ui-components-react';
-
-import {
-    StyledSearch,
-    StyledFiltered,
-} from './styled';
-
-import SearchItem from './components/SearchItem';
-
-import {
-    DetoolbarTool,
-} from '../../data/interfaces';
-
-import DetoolbarContext from '../../services/context';
+    import {
+        universal,
+    } from '@plurid/plurid-ui-components-react';
+    // #endregion libraries
 
 
+    // #region external
+    import {
+        DetoolbarTool,
+    } from '../../data/interfaces';
 
+    import DetoolbarContext from '../../services/context';
+    // #endregion external
+
+
+    // #region internal
+    import {
+        StyledSearch,
+        StyledFiltered,
+    } from './styled';
+
+    import SearchItem from './components/SearchItem';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 const {
     inputs: {
         Textline: PluridTextline,
@@ -165,6 +176,10 @@ const Search: React.FC<SearchProperties> = (
         </StyledSearch>
     );
 }
+// #endregion module
 
 
+
+// #region exports
 export default Search;
+// #endregion exports

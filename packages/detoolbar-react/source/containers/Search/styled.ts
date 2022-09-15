@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+// #region imports
+    // #region libraries
+    import styled from 'styled-components';
 
-import {
-    Theme,
-} from '@plurid/plurid-themes';
+    import type {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export interface IStyledSearch {
     theme: Theme;
 }
@@ -66,3 +71,4 @@ export const StyledFiltered = styled.div`
         border-bottom-right-radius: 1rem;
     }
 `;
+// #endregion module

@@ -1,9 +1,14 @@
-import {
-    Theme,
-} from '@plurid/plurid-themes';
+// #region imports
+    // #region libraries
+    import type {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export interface DetoolbarConfiguration {
     searchPlaceholder: string;
 }
@@ -42,3 +47,4 @@ export interface DetoolbarTool {
 export interface DetoolbarDrawer {
     Drawer: React.FC<any>;
 }
+// #endregion module

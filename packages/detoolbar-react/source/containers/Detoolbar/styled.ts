@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+// #region imports
+    // #region libraries
+    import styled from 'styled-components';
 
-import {
-    Theme,
-} from '@plurid/plurid-themes';
+    import type {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export const StyledDetoolbarContainer = styled.div`
     display: inline-block;
 `;
@@ -49,3 +54,4 @@ export const StyledDetoolbar = styled.div`
     font-family: Ubuntu, -apple-system, BlinkMacSystemFont,
         'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
 `;
+// #endregion module

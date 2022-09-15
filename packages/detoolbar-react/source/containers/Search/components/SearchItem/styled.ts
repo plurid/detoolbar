@@ -1,11 +1,16 @@
-import styled from 'styled-components';
+// #region imports
+    // #region libraries
+    import styled from 'styled-components';
 
-import {
-    Theme,
-} from '@plurid/plurid-themes';
+    import type {
+        Theme,
+    } from '@plurid/plurid-themes';
+    // #endregion libraries
+// #endregion imports
 
 
 
+// #region module
 export interface IStyledSearchItem {
     theme: Theme;
     active: boolean;
@@ -45,3 +50,4 @@ export const StyledSearchItem = styled.li<IStyledSearchItem>`
         };
     }
 `;
+// #endregion module

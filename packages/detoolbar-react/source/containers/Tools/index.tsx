@@ -1,28 +1,39 @@
-import React, {
-    useContext,
-} from 'react';
+// #region imports
+    // #region libraries
+    import React, {
+        useContext,
+    } from 'react';
 
-import {
-    uuid,
-} from '@plurid/plurid-functions';
-
-import {
-    StyledTools,
-} from './styled';
-
-import ToolItem from './components/ToolItem';
-
-import DetoolbarContext from '../../services/context';
+    import {
+        uuid,
+    } from '@plurid/plurid-functions';
+    // #endregion libraries
 
 
+    // #region external
+    import DetoolbarContext from '../../services/context';
+    // #endregion external
 
+
+    // #region internal
+    import {
+        StyledTools,
+    } from './styled';
+
+    import ToolItem from './components/ToolItem';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 export interface ToolsProperties {
 }
 
 const Tools: React.FC<ToolsProperties> = (
     properties,
 ) => {
-    /** context */
+    // #region context
     const context = useContext(DetoolbarContext);
 
     if (!context) {
@@ -33,14 +44,16 @@ const Tools: React.FC<ToolsProperties> = (
         indexedTools,
         activeTools,
     } = context;
+    // #endregion context
 
 
-    /** properties */
+    // #region properties
     // const {
     // } = properties;
+    // #endregion properties
 
 
-    /** render */
+    // #region render
     return (
         <StyledTools>
             {activeTools.map(activeTool => {
@@ -58,7 +71,12 @@ const Tools: React.FC<ToolsProperties> = (
             })}
         </StyledTools>
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default Tools;
+// #endregion exports

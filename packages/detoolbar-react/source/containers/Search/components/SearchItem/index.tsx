@@ -1,29 +1,40 @@
-import React, {
-    useContext,
-    // useState,
-    // useEffect,
-} from 'react';
-
-import {
-    StyledSearchItem,
-} from './styled';
-
-import {
-    DetoolbarTool,
-} from '../../../../data/interfaces';
-
-import DetoolbarContext from '../../../../services/context';
+// #region imports
+    // #region libraries
+    import React, {
+        useContext,
+        // useState,
+        // useEffect,
+    } from 'react';
+    // #endregion libraries
 
 
+    // #region external
+    import {
+        DetoolbarTool,
+    } from '../../../../data/interfaces';
 
+    import DetoolbarContext from '../../../../services/context';
+    // #endregion external
+
+
+    // #region internal
+    import {
+        StyledSearchItem,
+    } from './styled';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 export interface SearchItemProperties {
-    tool: DetoolbarTool,
+    tool: DetoolbarTool;
 }
 
 const SearchItem: React.FC<SearchItemProperties> = (
     properties,
 ) => {
-    /** context */
+    // #region context
     const context = useContext(DetoolbarContext);
 
     if (!context) {
@@ -35,9 +46,10 @@ const SearchItem: React.FC<SearchItemProperties> = (
         theme,
         activeTools,
     } = context;
+    // #endregion context
 
 
-    /** properties */
+    // #region properties
     const {
         tool,
     } = properties;
@@ -46,15 +58,10 @@ const SearchItem: React.FC<SearchItemProperties> = (
         id,
         name,
     } = tool;
+    // #endregion properties
 
 
-    /** state */
-
-
-    /** effect */
-
-
-    /** render */
+    // #region render
     return (
         <StyledSearchItem
             theme={theme}
@@ -70,7 +77,12 @@ const SearchItem: React.FC<SearchItemProperties> = (
             {name}
         </StyledSearchItem>
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default SearchItem;
+// #endregion exports

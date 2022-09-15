@@ -1,31 +1,42 @@
-import React, {
-    useContext,
-    useState,
-    useEffect,
-} from 'react';
-
-import {
-    StyledToolItem,
-    StyledToolItemButton,
-    StyledToolDrawer,
-} from './styled';
-
-import {
-    DetoolbarTool,
-} from '../../../../data/interfaces';
-
-import DetoolbarContext from '../../../../services/context';
+// #region imports
+    // #region libraries
+    import React, {
+        useContext,
+        useState,
+        useEffect,
+    } from 'react';
+    // #endregion libraries
 
 
+    // #region external
+    import {
+        DetoolbarTool,
+    } from '../../../../data/interfaces';
 
+    import DetoolbarContext from '../../../../services/context';
+    // #endregion external
+
+
+    // #region internal
+    import {
+        StyledToolItem,
+        StyledToolItemButton,
+        StyledToolDrawer,
+    } from './styled';
+    // #endregion internal
+// #endregion imports
+
+
+
+// #region module
 export interface ToolItemProperties {
-    tool: DetoolbarTool,
+    tool: DetoolbarTool;
 }
 
 const ToolItem: React.FC<ToolItemProperties> = (
     properties,
 ) => {
-    /** context */
+    // #region context
     const context = useContext(DetoolbarContext);
 
     if (!context) {
@@ -38,9 +49,10 @@ const ToolItem: React.FC<ToolItemProperties> = (
         activeDrawer,
         activateDrawer,
     } = context;
+    // #endregion context
 
 
-    /** properties */
+    // #region properties
     const {
         tool,
     } = properties;
@@ -50,25 +62,28 @@ const ToolItem: React.FC<ToolItemProperties> = (
         Tool,
         Drawer,
     } = tool;
+    // #endregion properties
 
 
-    /** state */
+    // #region state
     const [
         isActiveDrawer,
         setIsActiveDrawer,
     ] = useState(false);
+    // #endregion state
 
 
-    /** effect */
+    // #region effects
     useEffect(() => {
         const isActiveDrawer = activeDrawer === id;
         setIsActiveDrawer(isActiveDrawer);
     }, [
         activeDrawer,
     ]);
+    // #endregion effects
 
 
-    /** render */
+    // #region render
     return (
         <StyledToolItem
             theme={theme}
@@ -100,7 +115,12 @@ const ToolItem: React.FC<ToolItemProperties> = (
             )}
         </StyledToolItem>
     );
+    // #endregion render
 }
+// #endregion module
 
 
+
+// #region exports
 export default ToolItem;
+// #endregion exports

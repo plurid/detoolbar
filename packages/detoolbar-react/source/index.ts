@@ -1,10 +1,16 @@
-import Detoolbar from './containers/Detoolbar';
+// #region imports
+    // #region internal
+    import Detoolbar from './containers/Detoolbar';
+    // #endregion internal
+// #endregion imports
 
 
 
+// #region exports
 export * from './data/interfaces';
 
 
 export {
     Detoolbar,
-}
+};
+// #endregion exports
