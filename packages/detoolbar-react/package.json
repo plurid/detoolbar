@@ -49,11 +49,8 @@
         "@plurid/plurid-themes": "*",
         "@plurid/plurid-ui-components-react": "*",
         "@plurid/plurid-ui-state-react": "*",
-        "react": ">=17",
-        "react-dom": ">=17",
-        "react-redux": ">=7.2",
-        "redux": ">=4",
-        "redux-thunk": ">=2.3",
+        "react": ">=18",
+        "react-dom": ">=18",
         "styled-components": ">=5"
     },
     "devDependencies": {
@@ -76,9 +73,6 @@
         "jest-config": "^29.0.3",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
-        "react-redux": "^8.0.2",
-        "redux": "^4.2.0",
-        "redux-thunk": "^2.4.1",
         "rollup": "^2.79.0",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-typescript2": "^0.34.0",

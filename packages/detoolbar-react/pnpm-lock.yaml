@@ -20,9 +20,6 @@ specifiers:
   jest-config: ^29.0.3
   react: ^18.2.0
   react-dom: ^18.2.0
-  react-redux: ^8.0.2
-  redux: ^4.2.0
-  redux-thunk: ^2.4.1
   rollup: ^2.79.0
   rollup-plugin-peer-deps-external: ^2.2.4
   rollup-plugin-typescript2: ^0.34.0
@@ -52,9 +49,6 @@ devDependencies:
   jest-config: 29.0.3_sgupjgtkb76w4hsvieap2xky7i
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  react-redux: 8.0.2_3scyx54fe4cnnff6navzqxutae
-  redux: 4.2.0
-  redux-thunk: 2.4.1_redux@4.2.0
   rollup: 2.79.0
   rollup-plugin-peer-deps-external: 2.2.4_rollup@2.79.0
   rollup-plugin-typescript2: 0.34.0_ihkqvyh37tzxtjmovjyy2yrv7m
