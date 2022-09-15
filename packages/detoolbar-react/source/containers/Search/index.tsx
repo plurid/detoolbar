@@ -90,7 +90,14 @@ const Search: React.FC<SearchProperties> = (
     const handleKeyDown = (
         event: React.KeyboardEvent<HTMLInputElement>,
     ) => {
-        if (event.key === 'Escape') {
+        if (event.altKey && event.code === 'Space' && searchValue === '') {
+            event.preventDefault();
+            setFilteredTools(tools);
+            return;
+        }
+
+        if (event.code === 'Escape') {
+            setFilteredTools([]);
             activateSearch(false);
         }
     }
@@ -147,13 +154,23 @@ const Search: React.FC<SearchProperties> = (
             <PluridTextline
                 placeholder={searchPlaceholder}
                 text={searchValue}
-                atChange={(event) => setSearchValue(event.target.value)}
+                atChange={(event) => {
+                    if (event.defaultPrevented) {
+                        return;
+                    }
+                    if (event.target.value === ' ') {
+                        return;
+                    }
+
+                    setSearchValue(event.target.value);
+                }}
                 atKeyDown={handleKeyDown}
                 devisible={true}
                 style={{
                     height: '100%',
                     padding: '0 1rem',
                 }}
+                escapeClear={true}
             />
 
             {activeSearch && (
