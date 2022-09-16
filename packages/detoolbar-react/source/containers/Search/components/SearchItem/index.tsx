@@ -66,17 +66,26 @@ const SearchItem: React.FC<SearchItemProperties> = (
     // #endregion properties
 
 
+    // #region handlers
+    const handleClick: React.MouseEventHandler<HTMLLIElement> = (
+        event,
+    ) => {
+        event.preventDefault();
+
+        if (active) {
+            activateTool(toolID, false);
+        } else {
+            activateTool(toolID, true);
+        }
+    }
+    // #endregion handlers
+
+
     // #region render
     return (
         <StyledSearchItem
             theme={theme}
-            onClick={() => {
-                if (active) {
-                    activateTool(toolID, false);
-                } else {
-                    activateTool(toolID, true);
-                }
-            }}
+            onMouseDown={(event) => handleClick(event)}
         >
             <div>
                 {name}
@@ -85,6 +94,7 @@ const SearchItem: React.FC<SearchItemProperties> = (
             {active && (
                 <PluridIconValid
                     theme={theme}
+                    size="small"
                     inactive={true}
                 />
             )}

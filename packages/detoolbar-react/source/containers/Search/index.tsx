@@ -94,25 +94,47 @@ const Search: React.FC<SearchProperties> = (
 
     // #region effects
     useEffect(() => {
+        const check = (
+            name: string,
+            value: string,
+        ) => {
+            if (!value) {
+                return false;
+            }
+
+            if (name === value) {
+                return true;
+            }
+
+            if (name.startsWith(value)) {
+                return true;
+            }
+
+            if (value.length > 2) {
+                if (name.endsWith(value)) {
+                    return true;
+                }
+            }
+
+            return;
+        }
+
         const filteredTools = tools.filter(
             (tool) => {
                 const name = tool.name.toLowerCase();
                 const value = searchValue.toLowerCase();
 
-                if (!value) {
-                    return false;
-                }
-
-                if (name === value) {
+                const result = check(name, value);
+                if (result) {
                     return true;
                 }
 
-                if (name.startsWith(value)) {
-                    return true;
-                }
-
-                if (name.endsWith(value)) {
-                    return true;
+                const split = name.split(' ');
+                for (const splitName of split) {
+                    const result = check(splitName, value);
+                    if (result) {
+                        return true;
+                    }
                 }
 
                 return;
@@ -159,7 +181,7 @@ const Search: React.FC<SearchProperties> = (
                 atKeyDown={handleKeyDown}
                 devisible={true}
                 style={{
-                    height: '100%',
+                    height: '40px',
                     padding: '0 1rem',
                 }}
                 escapeClear={true}
