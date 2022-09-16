@@ -48,6 +48,7 @@ export interface DetoolbarProperties {
     tools: DetoolbarTool[];
     initialList?: string[];
     searchPlaceholder?: string;
+    searchHeightItems?: number;
     /**
      * Store the active tools list in local storage.
      */
@@ -69,6 +70,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         tools,
         initialList,
         searchPlaceholder: searchPlaceholderProperty,
+        searchHeightItems,
         storeList,
         storeListID,
         theme: themeProperty,
@@ -191,6 +193,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         activeSearch,
         activateSearch,
         searchPlaceholder,
+        searchHeightItems,
         activeTools,
         activeDrawer,
         activateTool,

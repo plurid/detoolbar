@@ -34,6 +34,7 @@ export const StyledSearch = styled.div`
 
 export interface IStyledFiltered {
     theme: Theme;
+    searchHeightItems: number | undefined;
 }
 
 export const StyledFiltered = styled.div`
@@ -64,6 +65,28 @@ export const StyledFiltered = styled.div`
         list-style: none;
         padding: 0;
         margin: 0;
+        height: ${
+            ({
+                searchHeightItems,
+            }: IStyledFiltered) => {
+                if (typeof searchHeightItems === 'number') {
+                    return searchHeightItems * 2 + 'rem';
+                }
+
+                return 'initial';
+            }
+        };
+        overflow: ${
+            ({
+                searchHeightItems,
+            }: IStyledFiltered) => {
+                if (typeof searchHeightItems === 'number') {
+                    return 'scroll';
+                }
+
+                return 'initial';
+            }
+        }
     }
 
     li:last-child {

@@ -17,6 +17,7 @@ export interface IDetoolbarContext {
         value: boolean,
     ) => void;
     searchPlaceholder: string;
+    searchHeightItems?: number;
     activeTools: string[];
     activeDrawer: string;
     activateTool: (

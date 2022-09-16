@@ -53,21 +53,13 @@ const Search: React.FC<SearchProperties> = (
 
     const {
         tools,
-        indexedTools,
         activeSearch,
         activateSearch,
         searchPlaceholder,
-        activeTools,
-        activateTool,
+        searchHeightItems,
         theme,
     } = context;
     // #endregion context
-
-
-    // #region properties
-    // const {
-    // } = properties;
-    // #endregion properties
 
 
     // #region state
@@ -172,6 +164,7 @@ const Search: React.FC<SearchProperties> = (
             {activeSearch && (
                 <StyledFiltered
                     theme={theme}
+                    searchHeightItems={searchHeightItems}
                 >
                     <ul>
                         {filteredTools.map((tool) => {
