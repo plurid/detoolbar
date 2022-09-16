@@ -91,9 +91,10 @@ const ToolItem: React.FC<ToolItemProperties> = (
         >
             <StyledToolItemButton
                 onClick={() => {
+                    activateSearch(false);
+
                     if (Drawer) {
                         if (!isActiveDrawer) {
-                            activateSearch(false);
                             activateDrawer(id || '');
                         } else {
                             activateDrawer('');
