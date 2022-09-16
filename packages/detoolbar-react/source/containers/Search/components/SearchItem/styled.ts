@@ -22,18 +22,15 @@ export const StyledSearchItem = styled.li<IStyledSearchItem>`
     user-select: none;
     cursor: pointer;
 
-    height: 2rem;
+    min-height: 2rem;
+    word-break: break-all;
     padding: 0 1rem;
 
     font-size: 0.8rem;
 
     :hover {
         background-color: ${
-            ({
-                theme,
-            }: IStyledSearchItem) => {
-                return theme.backgroundColorSecondary;
-            }
+            ({ theme }: IStyledSearchItem) => theme.backgroundColorSecondary
         };
     }
 `;
