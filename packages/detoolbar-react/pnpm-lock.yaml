@@ -7,7 +7,7 @@ specifiers:
   '@plurid/plurid-themes': ^0.0.0-2
   '@plurid/plurid-ui-components-react': ^0.0.0-19
   '@plurid/plurid-ui-state-react': ^0.0.0-8
-  '@types/jest': ^29.0.2
+  '@types/jest': ^29.0.3
   '@types/react': ^18.0.20
   '@types/react-dom': ^18.0.6
   '@types/react-redux': ^7.1.24
@@ -36,7 +36,7 @@ devDependencies:
   '@plurid/plurid-themes': 0.0.0-2
   '@plurid/plurid-ui-components-react': 0.0.0-19_4x3gfex537yxke3k7xfqnhrjcu
   '@plurid/plurid-ui-state-react': 0.0.0-8_yzjbm6gxo2frfyyww6ac35hdoy
-  '@types/jest': 29.0.2
+  '@types/jest': 29.0.3
   '@types/react': 18.0.20
   '@types/react-dom': 18.0.6
   '@types/react-redux': 7.1.24
@@ -989,8 +989,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.0.2:
-    resolution: {integrity: sha512-TaklkwSEtvwJpleiKBHgEBySIQlcZ08gYP/s5wdtdLnjz9uxjnDd7U+Y0JWACebkqBc+jtbol2PEtEW0wQV2zQ==}
+  /@types/jest/29.0.3:
+    resolution: {integrity: sha512-F6ukyCTwbfsEX5F2YmVYmM5TcTHy1q9P5rWlRbrk56KyMh3v9xRGUO3aa8+SkvMi0SHXtASJv1283enXimC0Og==}
     dependencies:
       expect: 29.0.3
       pretty-format: 29.0.3
