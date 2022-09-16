@@ -135,6 +135,10 @@ const Search: React.FC<SearchProperties> = (
 
 
     // #region render
+    const restrictedHeightItems = typeof searchHeightItems === 'number'
+        ? filteredTools.length > searchHeightItems ? searchHeightItems : undefined
+        : undefined;
+
     return (
         <StyledSearch
             theme={theme}
@@ -164,7 +168,7 @@ const Search: React.FC<SearchProperties> = (
             {activeSearch && (
                 <StyledFiltered
                     theme={theme}
-                    searchHeightItems={searchHeightItems}
+                    searchHeightItems={restrictedHeightItems}
                 >
                     <ul>
                         {filteredTools.map((tool) => {

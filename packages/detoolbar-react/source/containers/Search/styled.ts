@@ -70,7 +70,7 @@ export const StyledFiltered = styled.div`
                 searchHeightItems,
             }: IStyledFiltered) => {
                 if (typeof searchHeightItems === 'number') {
-                    return searchHeightItems * 2 + 'rem';
+                    return (searchHeightItems * 2 + 1) + 'rem';
                 }
 
                 return 'initial';
