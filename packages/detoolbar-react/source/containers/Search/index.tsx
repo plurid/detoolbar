@@ -54,17 +54,13 @@ const Search: React.FC<SearchProperties> = (
     const {
         tools,
         indexedTools,
-        configuration,
         activeSearch,
         activateSearch,
+        searchPlaceholder,
         activeTools,
         activateTool,
         theme,
     } = context;
-
-    const {
-        searchPlaceholder,
-    } = configuration;
     // #endregion context
 
 

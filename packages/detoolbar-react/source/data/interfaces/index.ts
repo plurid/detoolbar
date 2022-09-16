@@ -9,19 +9,14 @@
 
 
 // #region module
-export interface DetoolbarConfiguration {
-    searchPlaceholder: string;
-}
-
-
 export interface IDetoolbarContext {
     tools: DetoolbarTool[];
     indexedTools: Map<string, DetoolbarTool>;
-    configuration: DetoolbarConfiguration;
-    activeSearch: boolean,
+    activeSearch: boolean;
     activateSearch: (
         value: boolean,
-    ) => void,
+    ) => void;
+    searchPlaceholder: string;
     activeTools: string[];
     activeDrawer: string;
     activateTool: (

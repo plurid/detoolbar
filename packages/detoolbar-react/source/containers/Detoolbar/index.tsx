@@ -2,6 +2,7 @@
     // #region libraries
     import React, {
         useState,
+        useEffect,
     } from 'react';
 
     import {
@@ -19,10 +20,14 @@
     import Tools from '../Tools';
 
     import {
-        DetoolbarConfiguration,
         DetoolbarTool,
         IDetoolbarContext,
     } from '../../data/interfaces';
+
+    import {
+        SEARCH_PLACEHOLDER,
+        LOCAL_STORAGE_LIST_ID,
+    } from '../../data/constants';
 
     import DetoolbarContext from '../../services/context';
     // #endregion external
@@ -41,11 +46,19 @@
 // #region module
 export interface DetoolbarProperties {
     tools: DetoolbarTool[];
+    initialList?: string[];
+    searchPlaceholder?: string;
+    /**
+     * Store the active tools list in local storage.
+     */
+    storeList?: boolean;
+    storeListID?: string;
     theme?: string;
-    configuration?: Partial<DetoolbarConfiguration>;
 
     style?: React.CSSProperties;
     className?: string;
+
+    atListUpdate?: (list: string[]) => void;
 }
 
 const Detoolbar: React.FC<DetoolbarProperties> = (
@@ -54,26 +67,40 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     // #region properties
     const {
         tools,
+        initialList,
+        searchPlaceholder: searchPlaceholderProperty,
+        storeList,
+        storeListID,
         theme: themeProperty,
-        configuration: configurationProperty,
 
         style,
         className,
+
+        atListUpdate,
     } = properties;
 
     const theme: Theme = typeof themeProperty === 'string' && (themes as any)[themeProperty]
         ? (themes as any)[themeProperty]
         : themes.plurid;
 
+    const identifiedTools = tools.map(tool => {
+        if (tool.id) {
+            return tool;
+        }
+
+        return {
+            id: tool.name,
+            ...tool,
+        };
+    });
+
     const indexedTools = indexing.create(
-        indexing.identify(tools, 'id') as DetoolbarTool[],
+        indexing.identify(identifiedTools, 'id') as DetoolbarTool[],
         'map',
-        'id'
+        'id',
     );
 
-    const configuration: DetoolbarConfiguration = {
-        searchPlaceholder: configurationProperty?.searchPlaceholder || 'search',
-    };
+    const searchPlaceholder = searchPlaceholderProperty || SEARCH_PLACEHOLDER;
     // #endregion properties
 
 
@@ -85,7 +112,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     const [
         activeTools,
         setActiveTools,
-    ] = useState<string[]>([]);
+    ] = useState<string[]>(initialList || []);
     const [
         activeDrawer,
         setActiveDrawer,
@@ -124,13 +151,46 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
     // #endregion handlers
 
 
+    // #region effects
+    useEffect(() => {
+        if (atListUpdate) {
+            atListUpdate(activeTools);
+        }
+    }, [
+        activeTools,
+    ]);
+
+    useEffect(() => {
+        try {
+            const data = JSON.parse(
+                localStorage.getItem(storeListID || LOCAL_STORAGE_LIST_ID) || '[]',
+            );
+            setActiveTools(data);
+        } catch (error) {
+            return;
+        }
+    }, []);
+
+    useEffect(() => {
+        if (storeList) {
+            localStorage.setItem(
+                storeListID || LOCAL_STORAGE_LIST_ID, JSON.stringify(activeTools),
+            );
+        }
+    }, [
+        storeList,
+        activeTools,
+    ]);
+    // #endregion effects
+
+
     // #region context
     const detoolbarContext: IDetoolbarContext = {
-        tools,
+        tools: identifiedTools,
         indexedTools,
-        configuration,
         activeSearch,
         activateSearch,
+        searchPlaceholder,
         activeTools,
         activeDrawer,
         activateTool,
