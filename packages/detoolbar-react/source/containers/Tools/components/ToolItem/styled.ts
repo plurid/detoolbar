@@ -42,7 +42,7 @@ export const StyledToolItemButton = styled.div`
     display: flex;
     align-items: center;
     height: 100%;
-    margin: 0 0.4rem;
+    /* margin: 0 0.4rem; */
 `;
 
 
