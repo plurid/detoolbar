@@ -1,8 +1,8 @@
 // #region imports
     // #region libraries
     import ttypescript from 'ttypescript';
-    import external from 'rollup-plugin-peer-deps-external';
     import typescript from 'rollup-plugin-typescript2';
+    import { terser } from 'rollup-plugin-terser';
     // #endregion libraries
 
 
@@ -25,15 +25,26 @@ const build =  {
             format: 'cjs',
             globals,
             sourcemap: true,
+            exports: 'default',
         },
         {
             file: pkg.module,
             format: 'es',
             globals,
             sourcemap: true,
+            exports: 'default',
         },
     ],
     external: [
+        '@plurid/plurid-functions',
+        '@plurid/plurid-functions-react',
+        '@plurid/plurid-icons-react',
+        '@plurid/plurid-themes',
+        '@plurid/plurid-ui-components-react',
+        '@plurid/plurid-ui-state-react',
+        'react',
+        'react-dom',
+        'styled-components',
     ],
     watch: {
         include: 'source/**',
@@ -43,8 +54,13 @@ const build =  {
             typescript: ttypescript,
             useTsconfigDeclarationDir: true,
         }),
-        external({
-            includeDependencies: true,
+        terser({
+            mangle: false,
+            compress: false,
+            format: {
+                beautify: true,
+                comments: false,
+            },
         }),
     ],
 };
