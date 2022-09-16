@@ -9,8 +9,5 @@
 // #region exports
 export * from './data/interfaces';
 
-
-export {
-    Detoolbar,
-};
+export default Detoolbar;
 // #endregion exports
