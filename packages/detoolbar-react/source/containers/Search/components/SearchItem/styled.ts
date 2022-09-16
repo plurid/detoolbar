@@ -13,12 +13,12 @@
 // #region module
 export interface IStyledSearchItem {
     theme: Theme;
-    active: boolean;
 }
 
 export const StyledSearchItem = styled.li<IStyledSearchItem>`
     display: flex;
     align-items: center;
+    justify-content: space-between;
     user-select: none;
     cursor: pointer;
 
@@ -26,19 +26,6 @@ export const StyledSearchItem = styled.li<IStyledSearchItem>`
     padding: 0 1rem;
 
     font-size: 0.8rem;
-
-    background-color: ${
-        ({
-            theme,
-            active,
-        }: IStyledSearchItem) => {
-            if (active) {
-                return theme.backgroundColorSecondary;
-            }
-
-            return 'initial';
-        }
-    };
 
     :hover {
         background-color: ${

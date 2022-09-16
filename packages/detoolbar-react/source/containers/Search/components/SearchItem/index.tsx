@@ -2,9 +2,11 @@
     // #region libraries
     import React, {
         useContext,
-        // useState,
-        // useEffect,
     } from 'react';
+
+    import {
+        PluridIconValid,
+    } from '@plurid/plurid-icons-react';
     // #endregion libraries
 
 
@@ -58,6 +60,9 @@ const SearchItem: React.FC<SearchItemProperties> = (
         id,
         name,
     } = tool;
+
+    const toolID = id as string;
+    const active = activeTools.includes(toolID);
     // #endregion properties
 
 
@@ -66,15 +71,23 @@ const SearchItem: React.FC<SearchItemProperties> = (
         <StyledSearchItem
             theme={theme}
             onClick={() => {
-                if (activeTools.includes(id || '')) {
-                    activateTool(id || '', false);
+                if (active) {
+                    activateTool(toolID, false);
                 } else {
-                    activateTool(id || '', true);
+                    activateTool(toolID, true);
                 }
             }}
-            active={activeTools.includes(id || '')}
         >
-            {name}
+            <div>
+                {name}
+            </div>
+
+            {active && (
+                <PluridIconValid
+                    theme={theme}
+                    inactive={true}
+                />
+            )}
         </StyledSearchItem>
     );
     // #endregion render
