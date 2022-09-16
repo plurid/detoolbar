@@ -60,6 +60,7 @@ export interface DetoolbarProperties {
     className?: string;
 
     atListUpdate?: (list: string[]) => void;
+    atSearchActive?: (value: boolean) => void;
 }
 
 const Detoolbar: React.FC<DetoolbarProperties> = (
@@ -79,6 +80,7 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
         className,
 
         atListUpdate,
+        atSearchActive,
     } = properties;
 
     const theme: Theme = typeof themeProperty === 'string' && (themes as any)[themeProperty]
@@ -154,6 +156,14 @@ const Detoolbar: React.FC<DetoolbarProperties> = (
 
 
     // #region effects
+    useEffect(() => {
+        if (atSearchActive) {
+            atSearchActive(activeSearch);
+        }
+    }, [
+        activeSearch,
+    ]);
+
     useEffect(() => {
         if (atListUpdate) {
             atListUpdate(activeTools);
